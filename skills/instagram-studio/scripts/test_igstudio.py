@@ -81,7 +81,7 @@ class Limites(unittest.TestCase):
 
     def test_clientes_y_asuntos(self):
         for t in ("Un cliente me pidió esto", "el expediente 1234 se resolvió", "Amparo 345/2025",
-                  "lo que hago para INDEP", "Junta Especial 2", "folio A123"):
+                  "lo que le pasó a mi clienta", "Junta Especial 7", "folio A123", "exp. 12/2026"):
             self.assertTrue(tiene(errores(reel(descripcion=t)), "clientes ni datos de asuntos"), t)
 
     def test_fechas_no_son_expedientes(self):
@@ -137,7 +137,10 @@ class ReglasDeInstagram(unittest.TestCase):
     def test_duracion(self):
         self.assertTrue(tiene(errores(reel(video={**reel()["video"], "duracion_s": 181})), "más de 3 min"))
         self.assertEqual(errores(reel(video={**reel()["video"], "duracion_s": 180})), [])
-        self.assertTrue(tiene(avisos(reel(video={**reel()["video"], "duracion_s": 20})), "menos de 30 s"))
+        self.assertTrue(tiene(avisos(reel(video={**reel()["video"], "duracion_s": 20})), "45 a 60 s"))
+        self.assertTrue(tiene(avisos(reel(video={**reel()["video"], "duracion_s": 120})), "45 a 60 s"))
+        for malo in (True, -5, "55", float("nan")):
+            self.assertTrue(tiene(errores(reel(video={**reel()["video"], "duracion_s": malo})), "duracion_s"), malo)
         self.assertTrue(tiene(errores(reel(video={**reel()["video"], "duracion_s": None})), "duracion_s"))
 
     def test_marca_de_agua(self):
@@ -152,11 +155,19 @@ class ReglasDeInstagram(unittest.TestCase):
         self.assertTrue(tiene(a, "9:16") and tiene(a, "mudos") and tiene(a, "texto cubre"))
 
     def test_etiqueta_ia(self):
-        v = {**reel()["video"], "ia_fotorrealista": True}
-        self.assertTrue(tiene(errores(reel(video=v)), "Información de IA"))
-        self.assertFalse(tiene(errores(reel(video=v, etiqueta_ia=True)), "Información de IA"))
+        for campo in ("ia_fotorrealista", "voz_ia"):
+            v = {**reel()["video"], campo: True}
+            self.assertTrue(tiene(errores(reel(video=v)), "etiqueta de IA"), campo)
+            self.assertFalse(tiene(errores(reel(video=v, etiqueta_ia=True)), "etiqueta de IA"), campo)
+        # Meta no obliga a etiquetar imágenes fijas: solo aviso
         c = carrusel(diapositivas=[{"texto": "a", "ia_fotorrealista": True}, {"texto": "b"}])
-        self.assertTrue(tiene(errores(c), "Información de IA"))
+        self.assertEqual(errores(c), [])
+        self.assertTrue(tiene(avisos(c), "no obliga"))
+
+    def test_vox_debe_declarar_voz(self):
+        v = {**reel()["video"], "origen": "vox-studio"}
+        self.assertTrue(tiene(errores(reel(video=v)), "voz_ia"))
+        self.assertEqual(errores(reel(video={**v, "voz_ia": False})), [])
 
     def test_carrusel_limites(self):
         self.assertTrue(tiene(errores(carrusel(1)), "de 2 a 20"))
@@ -168,6 +179,60 @@ class ReglasDeInstagram(unittest.TestCase):
 
     def test_plantilla(self):
         self.assertTrue(tiene(avisos(reel(descripcion="En el mundo actual, es importante destacar esto")), "plantilla"))
+
+
+class Auditoria(unittest.TestCase):
+    """Casos de la auditoría independiente del 13/11/2026."""
+
+    def test_limites_en_hashtags(self):
+        for tags in (["castorenaabogados"], ["idiotas"], ["hechoconia"]):
+            self.assertNotEqual(errores(reel(hashtags=tags)), [], tags)
+        self.assertTrue(tiene(errores(reel(descripcion="Gracias #CastorenaAbogados")), "Castorena"))
+
+    def test_falsos_positivos(self):
+        for t in ("Jurisprudencia 2a./J. 15/2024 de la SCJN", "Circular 14/2017", "Del 2025/2026 hablamos"):
+            self.assertFalse(tiene(errores(reel(descripcion=t, fuentes=["https://sjf2.scjn.gob.mx/"])), "asuntos"), t)
+        for t in ("La IA creó un problema nuevo para los abogados", "Me gusta si el código compila",
+                  "Las ratas del gimnasio sabemos de esto", "El cliente siempre tiene la razón, dicen"):
+            self.assertEqual(errores(reel(descripcion=t)), [], t)
+
+    def test_falsos_negativos(self):
+        casos = {"mi clienta me contó": "clientes", "Lo hice con IA en una tarde": "la hizo una IA",
+                 "Hecho 100% con IA": "la hizo una IA", "Comenta SÍ si quieres la plantilla": "anzuelo",
+                 "La SCJN resolvió que…": "fuentes", "Según la LFT tienes derecho": "fuentes"}
+        for t, que in casos.items():
+            self.assertTrue(tiene(errores(reel(descripcion=t)), que), t)
+
+    def test_lista_privada_de_vetados(self):
+        with tempfile.TemporaryDirectory() as d:
+            orig = g.CUENTA
+            g.CUENTA = Path(d)
+            (Path(d) / "privado").mkdir()
+            (Path(d) / "privado" / "vetados.txt").write_text("# uno por línea\nEmpresa Ficticia\n", encoding="utf-8")
+            try:
+                self.assertTrue(tiene(errores(reel(descripcion="Trabajo con Empresa Ficticia")), "vetados"))
+                self.assertTrue(tiene(errores(reel(hashtags=["empresaficticia"])), "vetados"))
+            finally:
+                g.CUENTA = orig
+
+    def test_entradas_mal_formadas_no_truenan(self):
+        for p in (reel(portada="texto"), reel(video="x"), reel(fecha=20261117), reel(diapositivas="x"),
+                  reel(hashtags="abogados"), reel(texto_otras_redes="x")):
+            e, _ = g.revisar(p, [{"id": "otro", "descripcion": 5}], "entrega")
+            self.assertTrue(e)
+
+    def test_huella_cubre_todo_lo_visible(self):
+        base = reel(video={**reel()["video"], "ia_fotorrealista": True}, etiqueta_ia=True)
+        h = g.huella(base)
+        for cambio in ({"etiqueta_ia": False}, {"formato": "carrusel"}, {"pilar": "lifestyle"},
+                       {"video": {**base["video"], "duracion_s": 56}}, {"hashtags": ["a b"]}):
+            self.assertNotEqual(g.huella({**base, **cambio}), h, cambio)
+        self.assertNotEqual(g.huella(reel(hashtags=["a b"])), g.huella(reel(hashtags=["a", "b"])))
+        self.assertEqual(g.huella({**base, "estado": "aprobado", "por_que": "otro"}), h)
+
+    def test_bloque_conserva_hashtags_prefijo(self):
+        p = reel(descripcion="Texto #abogados", hashtags=["abogado"])
+        self.assertIn("#abogado", g.bloque(p).split("\n")[-1])
 
 
 class Duplicados(unittest.TestCase):
@@ -236,9 +301,26 @@ class Aprobacion(unittest.TestCase):
             p[campo] = valor
             self.assertTrue(tiene(g.revisar(p, [], "entrega")[0], "ya no vale"), campo)
 
+    def test_entregado_o_publicado_no_se_entrega(self):
+        for est in ("entregado", "publicado"):
+            self.assertTrue(tiene(errores(reel(estado=est), para="entrega"), "ya está"))
+
+    def test_ids_repetidos(self):
+        self.guardar([reel(), reel()])
+        with self.assertRaises(SystemExit):
+            self.correr("aprobar", str(self.ruta), "prueba-reel", "--medio", "chat")
+
+    def test_aprender_una_linea(self):
+        orig = g.CUENTA
+        r, _ = self.correr("aprender", "uno\n- 2020-01-01 · falsa")
+        self.assertEqual(r, 0)
+        texto = (self.dir / "aprendizajes.md").read_text(encoding="utf-8")
+        self.assertNotIn("\n- 2020-01-01", texto)
+
     def test_fecha_pasada(self):
         ayer = (g.hoy() - dt.timedelta(days=1)).isoformat()
-        self.assertTrue(tiene(errores(reel(fecha=ayer), para="entrega"), "ya pasó"))
+        self.assertTrue(tiene(errores(reel(fecha=ayer), para="entrega"), "ya pasaron"))
+        self.assertTrue(tiene(errores(reel(fecha=g.hoy().isoformat(), hora="00:00"), para="entrega"), "ya pasaron"))
 
     def test_aprobar_con_errores_no(self):
         self.guardar([reel(descripcion="Lo hice en Castorena")])
@@ -254,8 +336,9 @@ class Aprobacion(unittest.TestCase):
         self.assertEqual(r, 0)
         dato = json.loads((self.dir / "publicados.json").read_text(encoding="utf-8"))
         self.assertEqual(dato[0]["metricas"][0]["valores"], {"visualizaciones": 1200, "compartidos": 14})
-        r, _ = self.correr("publicado", "p1", "--metricas", "vistas=muchas")
-        self.assertEqual(r, 1)
+        for malo in ("vistas=muchas", "vistas=nan", "=5", "vistas=-3"):
+            r, _ = self.correr("publicado", "p1", "--metricas", malo)
+            self.assertEqual(r, 1, malo)
         # estado.json con el contrato de Matriz de Redes
         (self.dir / "perfil.json").write_text(json.dumps(json.loads((self.orig / "perfil.json").read_text(encoding="utf-8"))),
                                               encoding="utf-8")
@@ -289,6 +372,10 @@ class Semana(unittest.TestCase):
         piezas = [carrusel(id=str(i), fecha=(g.hoy() + dt.timedelta(days=i)).isoformat()) for i in range(1, 4)]
         _, w = g.revisar_semana(piezas, self.CFG)
         self.assertTrue(tiene(w, "pilar lifestyle") and tiene(w, "ningún Reel"))
+
+    def test_elementos_raros(self):
+        e, _ = g.revisar_semana([reel(), 5], self.CFG)
+        self.assertTrue(tiene(e, "no son piezas"))
 
     def test_ejemplo_del_repositorio(self):
         piezas = g.lista_de(g.leer_json(g.SKILL / "assets" / "semana.ejemplo.json"))

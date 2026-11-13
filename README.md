@@ -22,7 +22,7 @@ La diferencia es que **Instagram no publicó el código de su ranking**. Aquí n
 | [`references/entrega.md`](skills/instagram-studio/references/entrega.md) · [`medicion.md`](skills/instagram-studio/references/medicion.md) | Cómo publica Emi y cómo se mide. |
 | [`references/frontera.md`](skills/instagram-studio/references/frontera.md) | Qué hace esta skill y qué hacen Vox, Editor, Historias, x-viral y Matriz de Redes. |
 | [`scripts/igstudio.py`](skills/instagram-studio/scripts/igstudio.py) | Revisión, aprobación con huella, entrega, registro, estado y fuentes. |
-| [`data/fuentes.json`](skills/instagram-studio/data/fuentes.json) | Las 43 fuentes, con grado, fecha y cita. |
+| [`data/fuentes.json`](skills/instagram-studio/data/fuentes.json) | Las fuentes, con su grado; fecha cuando la fuente la publica. Las que cargan sin JavaScript llevan una cita que GitHub vigila; las demás (Centro de ayuda, tarjetas de Meta, Mosseri) se revisan a mano cada mes. |
 | [`cuenta/`](cuenta/README.md) | Estado de la cuenta: perfil, voz, aprendizajes y publicados. |
 | [`red/estado.json`](red/README.md) | Estado para Matriz de Redes. |
 | [`puente/`](puente/README.md) | Lo que esta skill deja para Vox Studio e Historias Studio. |
@@ -51,7 +51,7 @@ Funciona con Python 3.9 o posterior y no tiene dependencias. Sin terminal, ver [
 
 ## Estado
 
-Versión 1.0.0 (13/11/2026).
+Versión 1.0.1 (13/11/2026), con las correcciones de la auditoría independiente.
 
 - **Probado:** el script y el control ([`CHANGELOG.md`](CHANGELOG.md)).
 - **No probado todavía:** nada con una cuenta real, porque Emi la crea el 14-15/11; los menús de la app citados en la entrega; la tarea mensual completa.

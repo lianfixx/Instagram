@@ -14,7 +14,7 @@ Cada skill trabaja en su propio carril y en su propio repositorio. instagram-stu
 ## Con Vox Studio, en detalle
 
 - Un video de Vox para Instagram necesita de esta skill la idea, el público, el gancho, la duración objetivo y el candado de IA. Esta skill **no** escribe escenas ni guion.
-- **Candado de IA (13/11/2026):** en los videos para Instagram, Vox muestra estilo collage o ilustrado, nada fotorrealista. Si algún día hay imagen o voz realistas, `etiqueta_ia: true` y Emi activa la etiqueta al publicar. Ningún texto dice que lo hizo una IA.
+- **Candado de IA (13/11/2026):** en los videos para Instagram, Vox muestra estilo collage o ilustrado, nada fotorrealista. **Su voz sintética cuenta como voz realista de IA** y obliga a la etiqueta (oficial, `ayuda-etiqueta-ia`). Para no llevarla, el Reel se narra con la voz de Emi. Si se oye la voz de Vox: `video.voz_ia: true`, `etiqueta_ia: true` y Emi activa la etiqueta al publicar. Ningún texto dice que lo hizo una IA.
 - Vox hoy reconoce solo el puente de `lianfixx/X`. Para que lea también el de Instagram se dejó [`puente/PETICION-vox.md`](../../../puente/PETICION-vox.md); aplicarla le toca a Vox Studio, con permiso de Emi.
 
 ## Con Historias Studio

@@ -23,7 +23,7 @@ Cuatro videos que **graba Emi** y **edita Editor Studio**, más un carrusel. Sal
 | Jueves 19/11 | 19:00 | Reel 2 · **DOF** | Lo más público y fácil de entender; no toca expedientes. |
 | Martes 24/11 | 19:00 | Reel 3 · **Boletines** | Es el de más riesgo de mostrar datos de asuntos, por eso va tercero. Sin datos de demostración, se mueve después de Vox. |
 | Miércoles 25/11 | 13:00 | Carrusel · **«4 herramientas que construí uniendo IA y Derecho»** | Para entonces los Reels ya trajeron seguidores, y el feed reparte sobre todo entre ellos (oficial). Deja en el perfil un índice de la serie. |
-| Jueves 26/11 | 19:00 | Reel 4 · **Vox**, «el estudio de video que construí» | Cierre visual. Solo estilo collage o ilustrado, nada fotorrealista: así no lleva etiqueta de IA y se respeta la regla de Emi. |
+| Jueves 26/11 | 19:00 | Reel 4 · **Vox**, «el estudio de video que construí» | Cierre visual. Solo estilo collage o ilustrado, nada fotorrealista, **y narrado con la voz de Emi**: la voz sintética de Vox obliga a la etiqueta de IA (oficial). Si Emi prefiere que se oiga la voz de Vox, se activa la etiqueta; el texto igual no dice que lo hizo una IA. |
 
 Las horas son una hipótesis: los estudios de terceros no tienen datos de México (ver [estudios.md](estudios.md)).
 
@@ -32,13 +32,13 @@ Las horas son una hipótesis: los estudios de terceros no tienen datos de Méxic
 - En pantalla, nada de clientes, expedientes, juntas, folios, correos, el nombre Castorena ni el de sus licenciados. Se graba con datos de demostración o se difumina, y Editor Studio revisa cada cuadro.
 - La voz en off dice «mi sistema», nunca «el despacho».
 - Ningún texto dice que la pieza la hizo una IA.
-- Cada video dura menos de 3 min; lo ideal es de 45 a 90 s.
+- Cada video dura menos de 3 min; el objetivo es de 45 a 60 s (terceros).
 - A Instagram se sube el **MP4 limpio** de Editor Studio, nunca el descargado de TikTok.
 - Entrega a más tardar el día anterior: MP4, portada de 420×654 y la duración.
 
 ## Fase 2 · Ritmo normal (desde el 30/11/2026)
 
-- De **2 a 5 piezas por semana**, como máximo una al día. Al menos un Reel por semana.
+- De **3 a 5 piezas por semana** (Buffer, terceros); 2 como mínimo en una semana difícil (criterio). Como máximo una al día. Al menos un Reel por semana.
 - Pilares según `cuenta/perfil.json`.
 - Emi aprueba un **paquete semanal**, pieza por pieza.
 - Cada **lunes**, la IA prepara el paquete de la semana: lee las estadísticas que pasó Emi, anota las lecciones y propone.

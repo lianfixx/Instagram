@@ -2,7 +2,7 @@
   "contrato": "redes-estado/0.1.1",
   "skill": "instagram-studio",
   "red": "instagram",
-  "version_skill": "1.0.0",
+  "version_skill": "1.0.1",
   "actualizado": "2026-11-12",
   "cuentas": [
     {
@@ -48,7 +48,13 @@
   "lecciones": [
     {
       "fecha": "2026-11-13",
-      "texto": "Emi: «jamás en nada digas que lo armó una IA». Ninguna pieza dice que la hizo, la armó o la editó una IA. La etiqueta «Información de IA» de Instagram es otra cosa: un interruptor obligatorio solo cuando hay imagen, video o voz realistas hechos con IA; para no necesitarla, de Vox se muestra el estilo collage o ilustrado.",
+      "texto": "Emi: «jamás en nada digas que lo armó una IA». Ninguna pieza dice que la hizo, la armó o la editó una IA. La etiqueta «Información de IA» de Instagram es otra cosa: un interruptor obligatorio cuando hay video o voz realistas hechos con IA; para no necesitarla, de Vox se muestra el estilo collage o ilustrado.",
+      "evidencia": "cuenta/aprendizajes.md",
+      "alcance": "red"
+    },
+    {
+      "fecha": "2026-11-13",
+      "texto": "Auditoría: la voz sintética de Vox cuenta como «realistic AI-generated voiceover» y obliga a la etiqueta de IA. El Reel de Vox se narra con la voz de Emi o lleva la etiqueta.",
       "evidencia": "cuenta/aprendizajes.md",
       "alcance": "red"
     },
@@ -63,7 +69,7 @@
     {
       "fecha": "2026-11-13",
       "para": "vox-studio",
-      "tema": "Reel 4 de la campaña (26/11): «Vox, el estudio de video que construí». Mostrar el proceso y el estilo collage, no clips realistas. Público: abogados y creadores que quieren explicar temas jurídicos en video. Gancho tentativo: el antes y el después de un tema en 3 segundos.",
+      "tema": "Reel 4 de la campaña (26/11): «Vox, el estudio de video que construí». Mostrar el proceso y el estilo collage, no clips realistas, con la voz de Emi encima. Público: abogados y creadores que quieren explicar temas jurídicos en video. Gancho tentativo: el antes y el después de un tema en 3 segundos.",
       "por_que": "puente/para-vox.md"
     }
   ],

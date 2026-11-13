@@ -15,7 +15,7 @@ Las estadísticas las tienen las cuentas públicas, personales o profesionales. 
 | Seguidores | Cuentas que empezaron a seguir por esa pieza. | `seguidores` |
 | Seguidores y no seguidores | Reparto de quién lo vio. | `pct_no_seguidores` |
 
-**Impresiones** ya no existe para lo publicado desde el 02/07/2024 (oficial).
+**Impresiones** quedó obsoleta para lo publicado desde el 02/07/2024 (oficial, documentación de la API de Meta para desarrolladores; en la app, la métrica principal es Visualizaciones).
 
 ## Cálculos que no da la app
 

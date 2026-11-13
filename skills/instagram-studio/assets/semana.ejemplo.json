@@ -11,12 +11,29 @@
       "gancho": "En una semana dejé de buscar papeles: construí mi propio sistema.",
       "texto_en_pantalla": "Mi sistema · 1 de 4",
       "descripcion": "Abogado, maestría en Alta Dirección y una semana construyendo herramientas propias uniendo IA y Derecho. Esta es la primera: Matriz, el tablero donde vive todo mi trabajo. Si conoces a un abogado que todavía trabaja con mil carpetas, mándaselo.",
-      "hashtags": ["abogados", "derechomexicano", "inteligenciaartificial"],
-      "portada": {"texto": "Construí mi sistema", "archivo": ""},
-      "video": {"duracion_s": 55, "origen": "editor-studio", "relacion": "9:16", "sonido": true, "ia_fotorrealista": false, "archivo": ""},
+      "hashtags": [
+        "abogados",
+        "derechomexicano",
+        "inteligenciaartificial"
+      ],
+      "portada": {
+        "texto": "Construí mi sistema",
+        "archivo": ""
+      },
+      "video": {
+        "duracion_s": 55,
+        "origen": "editor-studio",
+        "relacion": "9:16",
+        "sonido": true,
+        "ia_fotorrealista": false,
+        "archivo": "",
+        "voz_ia": false
+      },
       "etiqueta_ia": false,
       "fuentes": [],
-      "texto_otras_redes": {"tiktok": "Una semana, un sistema propio. Parte 1 de 4: Matriz."},
+      "texto_otras_redes": {
+        "tiktok": "Una semana, un sistema propio. Parte 1 de 4: Matriz."
+      },
       "por_que": "Presentar a Emi y la serie; busca que lo sigan y que lo manden a colegas.",
       "riesgos": "Pantalla con datos de demostración; nada del despacho.",
       "reescrito": false,
@@ -30,14 +47,29 @@
       "fecha": "2026-11-25",
       "hora": "13:00",
       "descripcion": "Las cuatro herramientas que construí uniendo IA y Derecho, en una sola vista. Guárdalo si trabajas con normas, plazos o videos.",
-      "hashtags": ["abogados", "legaltech"],
+      "hashtags": [
+        "abogados",
+        "legaltech"
+      ],
       "diapositivas": [
-        {"texto": "4 herramientas que construí uniendo IA y Derecho"},
-        {"texto": "1 · Matriz: todo mi trabajo en un tablero"},
-        {"texto": "2 · DOF: lo que cambió en el Diario Oficial, resumido"},
-        {"texto": "3 · Boletines: avisos de lo que se publica"},
-        {"texto": "4 · Vox: mi estudio de video"},
-        {"texto": "¿Cuál te sirve más? Te leo"}
+        {
+          "texto": "4 herramientas que construí uniendo IA y Derecho"
+        },
+        {
+          "texto": "1 · Matriz: todo mi trabajo en un tablero"
+        },
+        {
+          "texto": "2 · DOF: lo que cambió en el Diario Oficial, resumido"
+        },
+        {
+          "texto": "3 · Boletines: avisos de lo que se publica"
+        },
+        {
+          "texto": "4 · Vox: mi estudio de video"
+        },
+        {
+          "texto": "¿Cuál te sirve más? Te leo"
+        }
       ],
       "etiqueta_ia": false,
       "fuentes": [],

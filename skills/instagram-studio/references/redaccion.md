@@ -25,9 +25,9 @@ Si la única respuesta honesta es «le darían me gusta», se cambia el ángulo,
 | `gancho` | Lo que se ve y se oye en los primeros 3 s. Es una frase o una imagen. Agresivo está permitido; mentiroso, no. |
 | `texto_en_pantalla` | El título que acompaña al gancho, si hay. Nunca debe cubrir la mayor parte de la imagen. |
 | `descripcion` | Amplía el video, no lo repite. Pone primero las palabras con que lo buscarían («abogado», «IA», el tema), porque la búsqueda lee la descripción, no los comentarios. Cierra con una invitación genuina (a mandarlo a quien le sirva, o a preguntar), nunca con un anzuelo. |
-| `hashtags` | 0 a 5, específicos. Clasifican, no dan alcance. |
+| `hashtags` | 0 a 5, específicos y relevantes. Instagram dice que los relevantes pueden ayudar a llegar a más gente; no son magia. |
 | `portada` | Texto corto y legible en la cuadrícula del perfil, a 420×654. No se cambia después de publicar. |
-| `video` | `duracion_s` (objetivo de 45 a 90 s; nunca más de 180), `origen` (`editor-studio`, `vox-studio` o `telefono`; nunca `tiktok`), `relacion` 9:16, `sonido`, `ia_fotorrealista`. |
+| `video` | `duracion_s` (objetivo de 45 a 60 s; nunca más de 180), `origen` (`editor-studio`, `vox-studio` o `telefono`; nunca `tiktok`), `relacion` 9:16, `sonido`, `ia_fotorrealista` (video realista hecho con IA) y `voz_ia` (se oye una voz realista de IA, como la de Vox). Si cualquiera de los dos es `true`, `etiqueta_ia: true`. En videos de Vox, `voz_ia` es obligatorio. |
 
 **Frontera con quien hace el video.** Esta skill decide la idea, el público, el gancho, la descripción, la portada y la hora. **No escribe el guion completo**: el guion es de Vox Studio y la edición del video grabado, de Editor Studio. Ver [frontera.md](frontera.md).
 
@@ -55,7 +55,7 @@ Va en `cuenta/privado/AAAA-Www.json`, que **no se sube** al repositorio. Puede s
  "gancho": "…", "texto_en_pantalla": "…", "descripcion": "…", "hashtags": ["abogados"],
  "portada": {"texto": "…", "archivo": ""},
  "video": {"duracion_s": 55, "origen": "editor-studio", "relacion": "9:16", "sonido": true,
-           "ia_fotorrealista": false, "archivo": ""},
+           "ia_fotorrealista": false, "voz_ia": false, "archivo": ""},
  "etiqueta_ia": false, "fuentes": [], "opinion_emi": "",
  "texto_otras_redes": {"tiktok": "…"},
  "por_que": "qué señal busca y para quién", "riesgos": "…",

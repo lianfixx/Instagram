@@ -104,6 +104,16 @@
    "usa": "Probar un Reel con no seguidores"
   },
   {
+   "id": "creators-faq",
+   "url": "https://creators.instagram.com/faq",
+   "titulo": "Instagram for Creators: FAQ",
+   "fecha": "",
+   "grado": "oficial",
+   "auto": true,
+   "cita": "engagement bait",
+   "usa": "Clickbait y anzuelos; hashtags relevantes"
+  },
+  {
    "id": "ia-etiqueta-2024",
    "url": "https://about.fb.com/news/2024/02/labeling-ai-generated-images-on-facebook-instagram-and-threads/",
    "titulo": "Labeling AI-generated images on Facebook, Instagram and Threads",
@@ -132,6 +142,16 @@
    "auto": true,
    "cita": "simply use AI tools as part of their creative process",
    "usa": "Usar IA como herramienta no obliga a la etiqueta de perfil"
+  },
+  {
+   "id": "ayuda-etiqueta-ia",
+   "url": "https://help.instagram.com/iphone-app/761121959519495",
+   "titulo": "Etiqueta de IA (ayuda)",
+   "fecha": "",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "Voz de IA realista requiere etiqueta; imágenes no"
   },
   {
    "id": "tu-algoritmo",
@@ -422,6 +442,16 @@
    "auto": false,
    "cita": "",
    "usa": "Vistas en los primeros 3 días; guardados en carrusel"
+  },
+  {
+   "id": "metricool-playbook-2025",
+   "url": "https://metricool.com/press-release-instagram-content-playbook/",
+   "titulo": "Metricool + HypeAuditor: Instagram Content Playbook 2025 (700 M)",
+   "fecha": "2025-10-14",
+   "grado": "terceros",
+   "auto": false,
+   "cita": "",
+   "usa": "Hora de las 8 p. m.; Reels primero en alcance"
   },
   {
    "id": "emplifi-collabs",

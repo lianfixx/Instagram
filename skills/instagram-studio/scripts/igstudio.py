@@ -58,34 +58,41 @@ HASHTAG = re.compile(r"(?<![\w&])#[^\s#.,;:!?¡¿()\[\]{}\"']+")
 ANZUELOS = [  # engagement bait: Pautas de recomendación (help.instagram.com/313829416281232)
     r"\bcomenta\s+[\"«“']?\w+[\"»”']?\s+y\s+te\s+(?:mando|paso|env[ií]o|doy|regalo)",
     r"\b(?:etiqueta|menciona)\s+a\s+(?:un|una|tu|tus|alguien|\d+)",
-    r"\b(?:dale|da|deja\s+tu)\s+(?:like|me\s+gusta|coraz[oó]n)\s+si\b",
-    r"\b(?:like|me\s+gusta)\s+si\b",
+    r"\b(?:dale|da|deja\s+tu|pon)\s+(?:un\s+)?(?:like|me\s+gusta|coraz[oó]n)\s+si\b",
+    r"\bcomenta\s+[\"«“']?\w+[\"»”']?\s+si\b",
     r"\bcomp[aá]rte(?:lo|la)?\s+si\b",
     r"\bs[ií]gueme\s+(?:y|para\s+(?:la\s+)?parte)",
     r"\bvota\s+con\s+(?:un|una|el|la)?\s*(?:like|me\s+gusta|emoji|comentario)",
     r"\bguarda(?:lo|la)?\s+(?:y\s+)?(?:te\s+)?(?:mando|paso|regalo)",
 ]
 AUTORIA_IA = [  # regla de Emi del 13/11/2026: ninguna pieza dice que la hizo una IA
-    r"\b(?:hech[oa]|generad[oa]|cread[oa]|editad[oa]|escrit[oa]|armad[oa]|producid[oa]|narrad[oa])\s+(?:con|por|desde)\s+(?:una?\s+|la\s+)?(?:ia|i\.a\.|inteligencia\s+artificial|chatgpt|claude|gemini)\b",
-    r"\b(?:la|una)\s+(?:ia|inteligencia\s+artificial)\s+(?:lo|la|me\s+lo|me\s+la)?\s*(?:hizo|arm[oó]|edit[oó]|escribi[oó]|gener[oó]|produjo|cre[oó]|narr[oó])\b",
+    r"\b(?:hech[oa]|generad[oa]|cread[oa]|editad[oa]|escrit[oa]|armad[oa]|producid[oa]|narrad[oa])\s+(?:(?:al\s+)?\d+\s*%\s+|totalmente\s+|completamente\s+|s[oó]lo\s+)?(?:con|por|desde)\s+(?:una?\s+|la\s+)?(?:ia|i\.a\.|inteligencia\s+artificial|chatgpt|claude|gemini)\b",
+    r"\b(?:la|una)\s+(?:ia|inteligencia\s+artificial)\s+(?:lo|la|los|las|me\s+lo|me\s+la)\s+(?:hizo|arm[oó]|edit[oó]|escribi[oó]|gener[oó]|produjo|cre[oó]|narr[oó])\b",
     r"\b(?:chatgpt|claude|gemini|una\s+ia|la\s+ia)\s+(?:hizo|arm[oó]|edit[oó]|escribi[oó]|gener[oó])\s+(?:este|esta|el|la|mi)\s+(?:video|reel|post|carrusel|texto|guion|gui[oó]n|voz)\b",
+    r"\b(?:lo|la)\s+(?:hice|hicimos|arm[eé]|edit[eé])\s+(?:\w+\s+)?con\s+(?:una?\s+|la\s+)?(?:ia|i\.a\.|inteligencia\s+artificial|chatgpt|claude|gemini)\b",
     r"\b(?:lo|la)\s+(?:hizo|arm[oó]|edit[oó]|escribi[oó]|gener[oó]|produjo)\s+(?:una?\s+|la\s+)(?:ia|i\.a\.|inteligencia\s+artificial)\b",
     r"\b(?:este|esta|el)\s+(?:video|reel|post|carrusel|texto)\s+(?:lo|la)\s+(?:hizo|arm[oó]|edit[oó]|escribi[oó]|gener[oó])\s+(?:una?\s+|la\s+)?(?:ia|chatgpt|claude|gemini)\b",
 ]
-DESPACHO_VETADO = r"\bcastorena\b"
+DESPACHO_VETADO = r"castorena"  # también dentro de hashtags como #CastorenaAbogados
+AUTORIA_COMPACTA = ("hechoconia", "hechaconia", "generadoconia", "generadaconia", "creadoconia", "creadaconia",
+                    "editadoconia", "hechoporia", "madewithai", "aigenerated")
 ASUNTOS = [
-    (r"\bmis?\s+clientes?\b|\bde\s+un\s+cliente\b|\bun\s+cliente\s+(?:me|nos)\b", "habla de clientes"),
-    (r"\bexpedientes?\s+(?:n[uú]m(?:ero)?\.?\s*)?\d", "número de expediente"),
-    (r"(?<![\d/])\d{1,6}/\d{4}\b(?!/)", "número con forma de expediente o juicio (NNN/AAAA)"),
-    (r"\bindep\b", "nombre de un cliente del despacho (INDEP)"),
+    (r"\b(?:mis?|nuestr[oa]s?)\s+client[ea]s?\b|\bun[ao]?\s+client[ea]\s+(?:me|nos)\b", "habla de sus clientes"),
+    (r"\b(?:expedientes?|exp\.|juicios?|amparos?|toca|causa\s+penal|carpeta\s+de\s+investigaci[oó]n)\s+(?:n[uú]m(?:ero)?\.?\s*|no\.\s*)?\d",
+     "número de expediente o juicio"),
     (r"\bjunta\s+especial\s+(?:n[uú]m(?:ero)?\.?\s*)?\d", "junta ligada a asuntos"),
     (r"\bfolio\s+\w*\d", "folio de un asunto"),
 ]
-INSULTOS = r"\b(?:idiotas?|imb[eé]cil(?:es)?|pendej[oa]s?|est[uú]pid[oa]s?|tarad[oa]s?|mierdas?|ratas?|payas[oa]s?)\b"
+CLIENTE_GENERICO = re.compile(r"\bclient[ea]s?\b", re.I)
+# Un número NNN/AAAA suelto puede ser un expediente o una tesis o circular: solo aviso.
+NUMERO_ASUNTO = re.compile(r"(?<![\d/.])(?!(?:19|20)\d\d/)\d{1,6}/(?:19|20)\d\d\b(?!/)")
+VETADOS_PRIVADOS = "privado/vetados.txt"  # nombres de clientes, uno por línea; vive en cuenta/privado/ y no se sube
+INSULTOS = r"\b(?:idiotas?|imb[eé]cil(?:es)?|pendej[oa]s?|est[uú]pid[oa]s?|tarad[oa]s?|mierdas?)\b"
 DERECHO = re.compile(
     r"\b(?:art[ií]culo|art\.)\s*\d|\b(?:ley|reglamento|constituci[oó]n|jurisprudencia|norma\s+oficial)\b"
     r"|\bc[oó]digo\s+(?:civil|penal|fiscal|de\s+comercio|nacional|federal|familiar|de\s+procedimientos|del\s+trabajo)"
-    r"|\btesis\s+(?:aislada|de\s+jurisprudencia|[ivxl]+\.|\d)", re.I)  # «código» y «tesis» solo en sentido jurídico
+    r"|\btesis\s+(?:aislada|de\s+jurisprudencia|[ivxl]+\.|\d)"
+    r"|\b(?:scjn|suprema\s+corte|tribunal(?:es)?\s+colegiados?|tepjf|cpeum|lft|lfpca|cnpcf|cff|lisr)\b", re.I)  # «código» y «tesis» solo en sentido jurídico
 RELLENO = [r"\ben el mundo actual\b", r"\bes importante destacar\b", r"\ben resumen\b", r"\bsin lugar a dudas\b",
            r"\bhoy en d[ií]a\b", r"\bno es \w+(?:\s+\w+)?,\s*es\b", r"\bdesbloquea\b", r"\bpotencia tu\b", "—"]
 
@@ -97,6 +104,10 @@ def leer_json(ruta: Path):
         return json.loads(Path(ruta).read_text(encoding="utf-8"))
     except FileNotFoundError:
         raise SystemExit(f"No existe {ruta}")
+    except (IsADirectoryError, PermissionError) as exc:
+        raise SystemExit(f"No se puede leer {ruta}: {exc}")
+    except UnicodeDecodeError:
+        raise SystemExit(f"{ruta} no es texto UTF-8")
     except json.JSONDecodeError as exc:
         raise SystemExit(f"{ruta} no es JSON válido: {exc}")
 
@@ -128,6 +139,8 @@ def hoy() -> dt.date:
 
 
 def fecha_ok(v) -> bool:
+    if not isinstance(v, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", v):
+        return False
     try:
         dt.date.fromisoformat(str(v))
         return True
@@ -149,32 +162,42 @@ def lista_de(dato) -> list:
     raise SystemExit("El archivo debe tener una pieza, una lista o {\"piezas\": [...]}")
 
 
+def sub(p: dict, clave: str) -> dict:
+    """Un sub-objeto (video, portada) o {} si falta o viene mal formado."""
+    v = p.get(clave)
+    return v if isinstance(v, dict) else {}
+
+
+def lista(p: dict, clave: str) -> list:
+    v = p.get(clave)
+    return v if isinstance(v, list) else []
+
+
 def textos(p: dict) -> list[tuple[str, str]]:
-    """Todo el texto visible de una pieza, con su lugar."""
-    out = [("gancho", p.get("gancho") or ""), ("descripcion", p.get("descripcion") or "")]
-    portada = p.get("portada") or {}
-    if isinstance(portada, dict):
-        out.append(("portada", portada.get("texto") or ""))
-    for i, d in enumerate(p.get("diapositivas") or [], 1):
-        out.append((f"diapositiva {i}", (d.get("texto") if isinstance(d, dict) else str(d)) or ""))
-    out.append(("guion_en_pantalla", p.get("texto_en_pantalla") or ""))
-    return [(k, nfc(v)) for k, v in out if v]
+    """Todo el texto visible de una pieza, con su lugar (incluye los hashtags de la lista)."""
+    out = [("gancho", p.get("gancho")), ("descripcion", p.get("descripcion")),
+           ("portada", sub(p, "portada").get("texto")), ("texto_en_pantalla", p.get("texto_en_pantalla"))]
+    for i, d in enumerate(lista(p, "diapositivas"), 1):
+        out.append((f"diapositiva {i}", d.get("texto") if isinstance(d, dict) else d))
+    tags = [str(h) for h in lista(p, "hashtags")]
+    if tags:
+        out.append(("hashtags", " ".join("#" + h.lstrip("#") for h in tags)))
+    return [(k, nfc(str(v))) for k, v in out if v]
+
+
+NO_HUELLA = {"estado", "aprobado_por_emi", "aprobado_medio", "aprobado_huella", "por_que", "riesgos", "notas", "nota"}
 
 
 def huella(p: dict) -> str:
-    """Huella de lo que Emi aprueba: textos, hashtags, archivos y hora."""
-    partes = [f"{k}={v}" for k, v in textos(p)]
-    partes += ["#=" + " ".join(p.get("hashtags") or [])]
-    partes += ["archivo=" + str((p.get("video") or {}).get("archivo") or ""),
-               "portada_archivo=" + str((p.get("portada") or {}).get("archivo") or "")]
-    partes += ["img=" + str(d.get("archivo") or "") for d in (p.get("diapositivas") or []) if isinstance(d, dict)]
-    partes += [f"cuando={p.get('fecha')} {p.get('hora')}"]
-    return hashlib.sha256("\n".join(partes).encode("utf-8")).hexdigest()
+    """Huella de todo lo que Emi aprueba: cualquier campo salvo el estado, la aprobación y las notas internas."""
+    datos = {k: v for k, v in p.items() if k not in NO_HUELLA}
+    canon = json.dumps(datos, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(unicodedata.normalize("NFC", canon).encode("utf-8")).hexdigest()
 
 
 def contar_hashtags(p: dict) -> int:
     en_texto = {h.lower() for _, t in textos(p) for h in HASHTAG.findall(t)}
-    en_lista = {("#" + h.lstrip("#")).lower() for h in (p.get("hashtags") or [])}
+    en_lista = {("#" + str(h).lstrip("#")).lower() for h in lista(p, "hashtags")}
     return len(en_texto | en_lista)
 
 
@@ -191,9 +214,17 @@ def publicados() -> list[dict]:
     if not ruta.is_file():
         return []
     dato = leer_json(ruta)
-    if not isinstance(dato, list):
-        raise SystemExit("cuenta/publicados.json debe ser una lista")
+    if not isinstance(dato, list) or not all(isinstance(x, dict) for x in dato):
+        raise SystemExit("cuenta/publicados.json debe ser una lista de objetos")
     return dato
+
+
+def vetados() -> list[str]:
+    """Nombres de clientes que Emi quiera vetar. Viven fuera del repositorio público."""
+    ruta = CUENTA / VETADOS_PRIVADOS
+    if not ruta.is_file():
+        return []
+    return [plano(l) for l in ruta.read_text(encoding="utf-8").splitlines() if plano(l) and not l.startswith("#")]
 
 
 # ---------------------------------------------------------------- revisión
@@ -214,35 +245,49 @@ def revisar(p, historial: list[dict], para: str = "") -> tuple[list[str], list[s
         e.append("esta skill solo cubre la cuenta personal (Emi, 13/11/2026)")
     if p.get("estado", "borrador") not in ESTADOS:
         e.append(f"«estado» debe ser uno de {', '.join(ESTADOS)}")
+    for clave in ("video", "portada"):
+        if p.get(clave) is not None and not isinstance(p.get(clave), dict):
+            e.append(f"«{clave}» debe ser un objeto")
+    for clave in ("diapositivas", "hashtags", "fuentes"):
+        if p.get(clave) is not None and not isinstance(p.get(clave), list):
+            e.append(f"«{clave}» debe ser una lista")
 
-    todo = "\n".join(t for _, t in textos(p))
+    todo = "\n".join(t for lugar, t in textos(p) if lugar != "hashtags")
     if not plano(todo):
         e.append("la pieza no tiene texto (gancho, descripción, portada o diapositivas)")
 
-    # Límites de Emi
+    # Límites de Emi (también dentro de los hashtags)
+    privados = vetados()
+    cliente_generico = False
     for lugar, t in textos(p):
-        if re.search(DESPACHO_VETADO, t, re.I):
+        compacto = re.sub(r"[^a-z0-9]", "", plano(t))
+        if re.search(DESPACHO_VETADO, compacto):
             e.append(f"{lugar}: nombra a Castorena (límite permanente de Emi)")
         for patron, que in ASUNTOS:
             if re.search(patron, t, re.I):
                 e.append(f"{lugar}: {que} (nunca clientes ni datos de asuntos)")
+        for nombre in privados:
+            if nombre in plano(t) or nombre.replace(" ", "") in compacto:
+                e.append(f"{lugar}: nombra a alguien de la lista privada de vetados (cuenta/{VETADOS_PRIVADOS})")
+        if NUMERO_ASUNTO.search(t):
+            w.append(f"{lugar}: número con forma NNN/AAAA; si es un expediente o juicio, se quita. Si es una tesis o circular, lleva fuente")
+        if CLIENTE_GENERICO.search(t):
+            cliente_generico = True
         if re.search(INSULTOS, t, re.I):
             e.append(f"{lugar}: insulto a personas (límite de Emi y Normas comunitarias sobre acoso)")
-        for patron in AUTORIA_IA:
-            if re.search(patron, t, re.I):
-                e.append(f"{lugar}: dice que la pieza la hizo una IA (regla de Emi, 13/11/2026)")
-                break
-        for patron in ANZUELOS:
-            if re.search(patron, t, re.I):
-                e.append(f"{lugar}: anzuelo de interacción; las Pautas de recomendación no recomiendan el «engagement bait»")
-                break
+        if any(re.search(pt, t, re.I) for pt in AUTORIA_IA) or any(x in compacto for x in AUTORIA_COMPACTA):
+            e.append(f"{lugar}: dice que la pieza la hizo una IA (regla de Emi, 13/11/2026)")
+        if any(re.search(pt, t, re.I) for pt in ANZUELOS):
+            e.append(f"{lugar}: anzuelo de interacción («engagement bait»): Instagram no lo recomienda")
         relleno = [r for r in RELLENO if re.search(r, t, re.I)]
         if relleno:
             w.append(f"{lugar}: suena a plantilla ({len(relleno)} señal(es): relleno, «no es X, es Y» o raya larga)")
+    if cliente_generico:
+        w.append("menciona clientes: que sea en general, nunca uno real ni reconocible")
 
-    if DERECHO.search(todo) and not p.get("fuentes"):
-        e.append("cita derecho sin «fuentes» oficiales verificadas")
-    if p.get("pilar") == "politica" and not (p.get("opinion_emi") or "").strip():
+    if DERECHO.search(todo) and not lista(p, "fuentes"):
+        e.append("cita derecho (ley, artículo, tribunal o tesis) sin «fuentes» oficiales verificadas")
+    if p.get("pilar") == "politica" and not str(p.get("opinion_emi") or "").strip():
         e.append("pilar política sin «opinion_emi»: primero se le pregunta su postura")
     if p.get("pilar") == "politica" or re.search(r"\b(?:reforma|ley|iniciativa|elecci[oó]n|partido|congreso|senado)\b", todo, re.I):
         w.append("Meta puede tratarlo como contenido político (incluye leyes): quien no sigue a Emi puede tener limitado verlo")
@@ -251,63 +296,67 @@ def revisar(p, historial: list[dict], para: str = "") -> tuple[list[str], list[s
     n = contar_hashtags(p)
     if n > MAX_HASHTAGS:
         e.append(f"{n} hashtags: Instagram admite {MAX_HASHTAGS} como máximo")
-    desc = p.get("descripcion") or ""
+    desc = str(p.get("descripcion") or "")
     if len(desc) > DESCRIPCION_LARGA:
         w.append(f"descripción de {len(desc)} caracteres: que todo tenga relación con el contenido (Pautas de recomendación)")
 
     # Reel
-    v = p.get("video") or {}
+    v = sub(p, "video")
     if formato == "reel":
-        if not (p.get("gancho") or "").strip():
+        if not str(p.get("gancho") or "").strip():
             e.append("Reel sin «gancho»: los primeros 3 segundos deciden si se sigue viendo")
         dur = v.get("duracion_s")
-        if not isinstance(dur, (int, float)) or dur <= 0:
-            e.append("Reel sin «video.duracion_s»")
+        if isinstance(dur, bool) or not isinstance(dur, (int, float)) or not 0 < dur < 10_000:
+            e.append("Reel sin «video.duracion_s» válida (segundos)")
         else:
             if dur > MAX_REEL_RECOMENDABLE:
                 e.append(f"Reel de {dur} s: más de 3 min no se recomienda a quien no sigue a Emi")
-            elif dur < 30:
-                w.append(f"Reel de {dur} s: en el estudio de Socialinsider (2026) los de menos de 30 s rinden menos (terceros)")
+            elif dur < 30 or dur > 90:
+                w.append(f"Reel de {dur} s: el objetivo es de 45 a 60 s (Socialinsider 2026, terceros); de 30 s a 3 min rinde parecido")
         if v.get("origen") not in ORIGENES:
             e.append(f"«video.origen» debe ser uno de {', '.join(ORIGENES)}")
-        if not ((p.get("portada") or {}).get("texto") or (p.get("portada") or {}).get("archivo")):
+        if not (sub(p, "portada").get("texto") or sub(p, "portada").get("archivo")):
             w.append("Reel sin portada definida (texto o archivo); la portada no se puede cambiar después")
     if formato in ("reel", "carrusel"):
-        if v.get("origen") in ("tiktok", "otra-app"):
-            e.append("video bajado de otra app: lleva marca de agua y Instagram no lo recomienda; usar el archivo limpio")
-        if v.get("marca_de_agua"):
-            e.append("el video tiene marca de agua visible: Instagram no lo recomienda")
+        if v.get("origen") in ("tiktok", "otra-app") or v.get("marca_de_agua"):
+            e.append("video con marca de agua o bajado de otra app: Instagram lo muestra menos y solo recomienda contenido sin marcas visibles; usar el archivo limpio")
         if v and v.get("relacion", "9:16") != "9:16":
             w.append(f"relación {v.get('relacion')}: Instagram recomienda vertical 9:16")
         if v and v.get("sonido") is False:
             w.append("Reel sin sonido: Instagram muestra menos los Reels mudos")
         if v.get("texto_mayoritario"):
             w.append("el texto cubre la mayor parte de la imagen: Instagram lo muestra menos")
-    ia_real = bool(v.get("ia_fotorrealista")) or any(
-        isinstance(d, dict) and d.get("ia_fotorrealista") for d in (p.get("diapositivas") or []))
-    if ia_real and not p.get("etiqueta_ia"):
-        e.append("lleva imagen, video o voz realistas hechos con IA: Meta obliga a activar «Información de IA» al publicar")
-    if ia_real:
-        w.append("lleva IA fotorrealista: la etiqueta es un interruptor de Instagram; el texto no dice que lo hizo una IA")
+
+    # IA: Meta exige etiqueta para video fotorrealista y audio o voz realistas; no para imágenes fijas
+    ia_av = bool(v.get("ia_fotorrealista")) or bool(v.get("voz_ia")) or bool(p.get("voz_ia"))
+    if ia_av and not p.get("etiqueta_ia"):
+        e.append("lleva video fotorrealista o voz o audio realistas hechos con IA: Meta obliga a activar la etiqueta de IA al publicar")
+    if formato == "reel" and v.get("origen") == "vox-studio" and "voz_ia" not in v:
+        e.append("video de Vox Studio sin «video.voz_ia»: Vox narra con voz sintética; decir si se oye (true exige la etiqueta de IA)")
+    if ia_av:
+        w.append("lleva IA realista: la etiqueta es un interruptor de Instagram; el texto no dice que lo hizo una IA")
+    if any(isinstance(d, dict) and d.get("ia_fotorrealista") for d in lista(p, "diapositivas")):
+        w.append("imagen fija hecha con IA: Meta no obliga a etiquetarla, pero puede ponerle la etiqueta si la detecta")
 
     # Carrusel
     if formato == "carrusel":
-        diap = p.get("diapositivas") or []
+        diap = lista(p, "diapositivas")
         if not 2 <= len(diap) <= MAX_DIAPOSITIVAS:
             e.append(f"carrusel con {len(diap)} diapositivas: Instagram admite de 2 a {MAX_DIAPOSITIVAS}")
-        elif plano((diap[0].get("texto") if isinstance(diap[0], dict) else str(diap[0])) or "") == "":
+        elif not plano(str((diap[0].get("texto") if isinstance(diap[0], dict) else diap[0]) or "")):
             w.append("la primera diapositiva no tiene texto: hace de portada y de gancho")
 
     # Copia entre redes y duplicados
-    for red, otro in (p.get("texto_otras_redes") or {}).items():
-        if desc and otro and parecido(desc, otro) >= 0.9:
+    otras = p.get("texto_otras_redes") if isinstance(p.get("texto_otras_redes"), dict) else {}
+    for red, otro in otras.items():
+        if desc and otro and parecido(desc, str(otro)) >= 0.9:
             e.append(f"la descripción es casi igual a la de {red}: la idea se adapta a cada red, el texto no se pega")
     for h in historial:
-        if h.get("id") == p.get("id"):
+        if not isinstance(h, dict) or h.get("id") == p.get("id"):
             continue
-        if desc and h.get("descripcion") and parecido(desc, h["descripcion"]) >= 0.8:
+        if desc and h.get("descripcion") and parecido(desc, str(h["descripcion"])) >= 0.8:
             e.append(f"descripción casi igual a la publicada «{h.get('id')}»")
-        if p.get("gancho") and h.get("gancho") and parecido(p["gancho"], h["gancho"]) >= 0.85:
+        if p.get("gancho") and h.get("gancho") and parecido(str(p["gancho"]), str(h["gancho"])) >= 0.85:
             w.append(f"gancho casi igual al de «{h.get('id')}»")
 
     # Fecha
@@ -317,12 +366,15 @@ def revisar(p, historial: list[dict], para: str = "") -> tuple[list[str], list[s
         e.append("«hora» debe ser HH:MM (24 h, hora del centro de México)")
 
     if para == "entrega":
+        if p.get("estado") in ("entregado", "publicado"):
+            e.append(f"la pieza ya está «{p.get('estado')}»")
         if not (fecha_ok(p.get("fecha")) and hora_ok(p.get("hora"))):
             e.append("para entregar hacen falta «fecha» y «hora»")
         else:
-            f = dt.date.fromisoformat(p["fecha"])
-            if f < hoy():
-                e.append("la fecha ya pasó")
+            f = dt.date.fromisoformat(str(p["fecha"]))
+            cuando = dt.datetime.combine(f, dt.time.fromisoformat(p["hora"]), tzinfo=MX)
+            if cuando <= dt.datetime.now(MX):
+                e.append("la fecha y hora ya pasaron")
             elif (f - hoy()).days > MAX_DIAS_PROGRAMAR:
                 w.append(f"más de {MAX_DIAS_PROGRAMAR} días de anticipación: Instagram no deja programar tan lejos")
         if p.get("reescrito") is not True:
@@ -359,7 +411,9 @@ def revisar_lista(piezas: list, para: str = "") -> int:
 def revisar_semana(piezas: list[dict], cfg: dict) -> tuple[list[str], list[str]]:
     e: list[str] = []
     w: list[str] = []
-    con_fecha = [p for p in piezas if isinstance(p, dict) and fecha_ok(p.get("fecha"))]
+    if not all(isinstance(p, dict) for p in piezas):
+        return ["la semana tiene elementos que no son piezas (objetos JSON)"], []
+    con_fecha = [p for p in piezas if fecha_ok(p.get("fecha"))]
     if len(con_fecha) != len(piezas):
         e.append("en una semana cada pieza necesita «fecha»")
     por_dia: dict[str, int] = {}
@@ -398,10 +452,12 @@ def cmd_semana(a) -> int:
 
 
 def buscar_pieza(dato, ident: str) -> dict:
-    for p in lista_de(dato):
-        if isinstance(p, dict) and p.get("id") == ident:
-            return p
-    raise SystemExit(f"No hay una pieza con id «{ident}»")
+    halladas = [p for p in lista_de(dato) if isinstance(p, dict) and p.get("id") == ident]
+    if len(halladas) > 1:
+        raise SystemExit(f"Hay {len(halladas)} piezas con id «{ident}»: corregir antes de aprobar o entregar")
+    if not halladas:
+        raise SystemExit(f"No hay una pieza con id «{ident}»")
+    return halladas[0]
 
 
 def cmd_aprobar(a) -> int:
@@ -427,19 +483,20 @@ def bloque(p: dict) -> str:
     dia = dt.date.fromisoformat(p["fecha"])
     dias = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"][dia.weekday()]
     lineas = [f"{p['formato'].upper()} {p['id']} · {dias} {dia:%d/%m}, {p['hora']} (centro de México) · pilar: {p['pilar']}"]
-    v = p.get("video") or {}
+    v = sub(p, "video")
     if v.get("archivo"):
         lineas.append(f"Video: {v['archivo']}")
-    portada = p.get("portada") or {}
+    portada = sub(p, "portada")
     if portada.get("archivo") or portada.get("texto"):
         lineas.append(f"Portada: {portada.get('archivo') or ''} {('· texto: ' + portada['texto']) if portada.get('texto') else ''}".rstrip())
-    for i, d in enumerate(p.get("diapositivas") or [], 1):
+    for i, d in enumerate(lista(p, "diapositivas"), 1):
         if isinstance(d, dict):
             lineas.append(f"Diapositiva {i}: {d.get('archivo') or '(diseño)'} · {d.get('texto') or ''}")
     lineas.append("Etiqueta «Información de IA»: " + ("ACTIVARLA" if p.get("etiqueta_ia") else "no"))
     lineas.append("---- descripción (copiar tal cual) ----")
-    texto = p.get("descripcion") or ""
-    tags = [("#" + h.lstrip("#")) for h in (p.get("hashtags") or []) if ("#" + h.lstrip("#")).lower() not in texto.lower()]
+    texto = str(p.get("descripcion") or "")
+    ya = {h.lower() for h in HASHTAG.findall(texto)}
+    tags = [("#" + str(h).lstrip("#")) for h in lista(p, "hashtags") if ("#" + str(h).lstrip("#")).lower() not in ya]
     lineas.append(texto + (("\n\n" + " ".join(tags)) if tags else ""))
     return "\n".join(lineas)
 
@@ -468,12 +525,15 @@ def cmd_publicado(a) -> int:
         valores = {}
         for kv in a.metricas:
             k, _, v = kv.partition("=")
-            k = re.sub(r"[^a-z0-9_]", "_", plano(k))
+            k = re.sub(r"_+", "_", re.sub(r"[^a-z0-9_]", "_", plano(k))).strip("_")
             try:
-                valores[k] = float(v) if "." in v else int(v)
+                num = float(v) if "." in v else int(v)
             except ValueError:
-                print(f"Métrica inválida: {kv} (usa nombre=número)")
+                num = None
+            if not k or num is None or num != num or num in (float("inf"), float("-inf")) or num < 0:
+                print(f"Métrica inválida: {kv} (usa nombre=número no negativo)")
                 return 1
+            valores[k] = num
         reg.setdefault("metricas", []).append({"capturado": hoy().isoformat(), "fuente": a.fuente or "captura de Emi",
                                                "valores": valores})
         escribir_json(ruta, lista)
@@ -496,7 +556,11 @@ def cmd_publicado(a) -> int:
 def cmd_aprender(a) -> int:
     ruta = CUENTA / "aprendizajes.md"
     previo = ruta.read_text(encoding="utf-8") if ruta.is_file() else "# Aprendizajes\n"
-    ruta.write_text(previo.rstrip("\n") + f"\n- {hoy().isoformat()} · {a.texto.strip()}\n", encoding="utf-8")
+    texto = " ".join(a.texto.split())  # una sola línea: nadie inyecta lecciones con otra fecha
+    if not texto:
+        print("Falta el texto de la lección")
+        return 1
+    ruta.write_text(previo.rstrip("\n") + f"\n- {hoy().isoformat()} · {texto}\n", encoding="utf-8")
     print("Lección guardada en cuenta/aprendizajes.md")
     return 0
 
@@ -620,7 +684,7 @@ def cmd_vox(a) -> int:
             return 1
         ruta = PUENTE / "para-vox.md"
         previo = ruta.read_text(encoding="utf-8") if ruta.is_file() else "# Ideas de instagram-studio para Vox Studio\n"
-        ruta.write_text(previo.rstrip("\n") + f"\n- {hoy().isoformat()} · {' '.join(a.texto).strip()}\n", encoding="utf-8")
+        ruta.write_text(previo.rstrip("\n") + f"\n- {hoy().isoformat()} · {' '.join(' '.join(a.texto).split())}\n", encoding="utf-8")
         print("Idea guardada en puente/para-vox.md")
         return 0
     ok = False

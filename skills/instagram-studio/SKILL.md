@@ -3,7 +3,7 @@ name: instagram-studio
 description: "Planear, redactar, revisar, entregar para publicar y medir los Reels, publicaciones del feed y carruseles de la cuenta personal de Emi en Instagram, con base en fuentes oficiales de Instagram y Meta (sin pesos inventados): IA + Derecho en México, estilo de vida y gym, y opinión política. Usar al pedir un Reel, un carrusel, una publicación, la descripción, el gancho, la portada, un calendario o un paquete semanal para Instagram, al revisar un borrador, al preguntar qué premia o castiga Instagram, al medir sus estadísticas o al revisar si cambiaron sus reglas. No usar para historias de Instagram (eso es Historias Studio), ni para producir o editar video (Vox Studio y Editor Studio), ni para X, TikTok o LinkedIn."
 license: Uso personal de Emiliano García Milla. Sin licencia de reutilización para terceros.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
   release_date: "2026-11-13"
   language: "es-MX"
   fuentes_verificadas: "2026-11-13"
@@ -22,7 +22,7 @@ Funciona en cualquier IA ([portabilidad.md](references/portabilidad.md)). Abajo,
 1. **Emi aprueba cada pieza y la publica él.** Ninguna IA inicia sesión en su cuenta, publica, programa ni interactúa por él (regla común desde el 11/11/2026). La IA entrega listo para copiar.
 2. **La IA propone, Emi reescribe.** No se inventan vivencias, opiniones, cifras ni citas.
 3. **Límites de Emi:** nunca clientes ni datos de asuntos, tampoco en pantalla; no se nombra a Castorena ni a sus licenciados; sin insultos a personas; todo derecho con fuente oficial verificada. Detalle en [pilares.md](references/pilares.md).
-4. **Ningún texto dice que la pieza la hizo, la armó o la editó una IA** (Emi, 13/11/2026). Si hay imagen, video o voz **realistas** hechos con IA, Instagram obliga a activar su etiqueta «Información de IA». Para no necesitarla, de Vox se muestra estilo collage o ilustrado.
+4. **Ningún texto dice que la pieza la hizo, la armó o la editó una IA** (Emi, 13/11/2026). Si hay video o voz **realistas** hechos con IA (la voz sintética de Vox cuenta), Instagram obliga a activar su etiqueta de IA. Para no necesitarla, de Vox se muestra estilo collage o ilustrado y narra Emi con su voz.
 5. **En política, primero su postura** (`opinion_emi`).
 6. **Nada de anzuelos de interacción, compra de seguidores, grupos de interacción ni automatización.** Los ganchos agresivos sí se permiten.
 7. **Cada skill en su carril.** Las historias son de Historias Studio, el guion y el video de Vox Studio y Editor Studio. Ver [frontera.md](references/frontera.md).
@@ -62,11 +62,11 @@ Resumen de [algoritmo.md](references/algoritmo.md), verificado el 13/11/2026:
 
 - Cada superficie tiene su propio sistema. El feed ordena sobre todo a quien Emi ya sigue; **Reels y Explorar llevan a gente nueva**. Con una cuenta nueva, el Reel trae y el carrusel retiene (criterio).
 - Mosseri nombra tres señales: **tiempo de visualización, me gusta y envíos**. Los envíos pesan algo más con quien no lo sigue. No da pesos (oficial).
-- Un Reel se reparte por etapas, primero a un público pequeño de no seguidores, según la interacción y no según los seguidores (oficial). **Los primeros 3 segundos** deciden: la tarjeta de Reels predice si se ve menos de 3 s o se salta en menos de 2 (oficial).
-- Lo que saca de las recomendaciones: Reels de **más de 3 min**, **marca de agua**, mudo, bordes, mayoría de texto, contenido **no original** o repetido, anzuelos y descripciones largas que no tienen que ver con la pieza (oficial).
-- **Máximo 5 hashtags**; clasifican, no dan alcance. Carrusel de hasta 20. Programar hasta 30 días antes (oficial).
+- Un Reel se reparte por etapas, primero a un público pequeño de no seguidores, según la interacción y no solo según los seguidores (oficial). **Los primeros 3 segundos** deciden: la tarjeta de Reels predice si se ve menos de 3 s y usa los saltos en menos de 2 s como señal (oficial).
+- No se recomiendan a no seguidores: Reels de **más de 3 min**, contenido **no original** o con marcas de agua visibles, anzuelos y clickbait, y descripciones largas que no tienen que ver con la pieza. Se muestran menos: baja resolución, **marca de agua**, mudo, bordes y mayoría de texto (oficial).
+- **Máximo 5 hashtags**, relevantes; Instagram dice que pueden ayudar a llegar a más gente, sin magia. Carrusel de hasta 20. Programar hasta 30 días antes (oficial).
 - Meta cuenta las **leyes** como contenido político, y cada usuario controla cuánto ve (oficial).
-- De 3 a 5 piezas por semana y Reels de 45 a 60 s rinden mejor en estudios grandes (terceros). Ninguna hora tiene sustento oficial ni datos de México.
+- De 3 a 5 piezas por semana y Reels de 45 a 60 s rinden mejor en estudios grandes (terceros). Qué formato alcanza más no está resuelto entre estudios. Ninguna hora tiene sustento oficial ni datos de México.
 
 ## Mantener al día
 

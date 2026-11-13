@@ -33,11 +33,11 @@ Etiqueta «Información de IA»: no
 1. En la app: **+** → Reel (o Publicación para carrusel y foto) → elige el video o las imágenes.
 2. Portada: sube el archivo de portada. **No se puede cambiar después.**
 3. Pega la descripción tal cual.
-4. Si el bloque dice «ACTIVARLA»: Configuración avanzada → **Etiqueta de IA** → activar.
-5. Para programar: Configuración avanzada → **Programar esta publicación** → fecha y hora → Programar. Se puede hasta 30 días antes, con cuenta pública (oficial).
+4. Si el bloque dice «ACTIVARLA»: en la pantalla de creación, **Add AI label** (en español, «Etiqueta de IA»), según la ayuda de Instagram.
+5. Para programar: **More options → Schedule this post** (en español, «Más opciones → Programar esta publicación»), según la ayuda → fecha y hora → Programar. Se puede hasta 30 días antes, con cuenta pública (oficial).
 6. Le dice a la IA «publicado» y, si puede, pega el enlace.
 
-Los nombres de los menús son orientativos y pueden cambiar de una versión de la app a otra: no se han probado con la cuenta de Emi. Si no aparecen, buscar «Etiqueta de IA» o «Programar» en Configuración avanzada.
+Los nombres de los menús son orientativos y pueden cambiar de una versión de la app a otra: no se han probado con la cuenta de Emi. Si no aparecen, buscar «Etiqueta de IA» o «Programar» en las opciones de la pantalla de creación.
 
 La IA cambia el `estado` solo cuando Emi lo confirma; no dice «programado» ni «publicado» por su cuenta.
 
