@@ -1,0 +1,437 @@
+{
+ "verificado": "2026-11-13",
+ "auto_verificado": "",
+ "nota": "«oficial» = Instagram o Meta en fuente primaria; «terceros» = estudio externo con método declarado. auto=true: la cita se comprueba sola con «igstudio.py fuentes comprobar»; auto=false: la página carga con JavaScript o es un estudio, se revisa a mano en la revisión mensual.",
+ "fuentes": [
+  {
+   "id": "ranking-explicado",
+   "url": "https://about.instagram.com/blog/announcements/instagram-ranking-explained",
+   "titulo": "Instagram Ranking Explained (Adam Mosseri)",
+   "fecha": "2023-05-31",
+   "grado": "oficial",
+   "auto": true,
+   "cita": "low-resolution or watermarked reels, reels that are muted or contain borders",
+   "usa": "Predicciones por superficie; qué se muestra menos"
+  },
+  {
+   "id": "mosseri-3-senales",
+   "url": "https://www.instagram.com/p/DFFyRp-pINJ/",
+   "titulo": "@mosseri: las tres señales principales",
+   "fecha": "2025-01-21",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "the top three signals that matter most for ranking are watch time, likes and sends",
+   "usa": "Tiempo de visualización, me gusta y envíos"
+  },
+  {
+   "id": "mosseri-envios",
+   "url": "https://www.instagram.com/reel/C86WDnEuBjB/",
+   "titulo": "@mosseri: los envíos",
+   "fecha": "2024-07-02",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "sends are one of the biggest signals we use in ranking",
+   "usa": "Envíos por mensaje directo"
+  },
+  {
+   "id": "creators-cuentas-pequenas",
+   "url": "https://creators.instagram.com/blog/helping-creators-of-all-sizes-break-through",
+   "titulo": "Helping creators of all sizes break through",
+   "fecha": "2025-02-26",
+   "grado": "oficial",
+   "auto": true,
+   "cita": "distributing content based on its engagement, not just the creator's follower count",
+   "usa": "Distribución por etapas; gancho de 3 s; constancia"
+  },
+  {
+   "id": "creators-reels-2025",
+   "url": "https://creators.instagram.com/blog/the-latest-with-instagram",
+   "titulo": "Finding success on reels in 2025",
+   "fecha": "2025-01-21",
+   "grado": "oficial",
+   "auto": true,
+   "cita": "now reels up to 3 minutes will be eligible",
+   "usa": "Recomendables hasta 3 min; audio en carruseles"
+  },
+  {
+   "id": "creators-elegibilidad",
+   "url": "https://creators.instagram.com/blog/instagram-recommendations-eligibility-tips-creators",
+   "titulo": "Recommendations eligibility tips",
+   "fecha": "2023-04-25",
+   "grado": "oficial",
+   "auto": true,
+   "cita": "Pull the viewer in within the first 3 seconds",
+   "usa": "9:16 sin bordes; primeros 3 s; solo cuentas públicas"
+  },
+  {
+   "id": "originalidad-2024",
+   "url": "https://creators.instagram.com/recommendations-and-originality",
+   "titulo": "Helping creators find new audiences (originalidad)",
+   "fecha": "2024-04-30",
+   "grado": "oficial",
+   "auto": true,
+   "cita": "we will only recommend the original one",
+   "usa": "Solo se recomienda el original; sin marcas de agua"
+  },
+  {
+   "id": "originalidad-2026",
+   "url": "https://creators.instagram.com/blog/rewarding-original-creators-on-instagram",
+   "titulo": "Rewarding original creators on Instagram",
+   "fecha": "2026-04-30",
+   "grado": "oficial",
+   "auto": true,
+   "cita": "75% of recommendations in the US now coming from original posts",
+   "usa": "Originalidad en fotos y carruseles; ventana de 30 días"
+  },
+  {
+   "id": "pautas-originalidad",
+   "url": "https://creators.instagram.com/original-content-guidelines",
+   "titulo": "Original content guidelines",
+   "fecha": "",
+   "grado": "oficial",
+   "auto": true,
+   "cita": "Original content is work that you wholly created or reflects your unique perspective",
+   "usa": "Qué es original"
+  },
+  {
+   "id": "trial-reels",
+   "url": "https://creators.instagram.com/blog/instagram-trial-reels",
+   "titulo": "Trial reels",
+   "fecha": "2024-12-10",
+   "grado": "oficial",
+   "auto": true,
+   "cita": "Trial reels will be shown to non-followers first",
+   "usa": "Probar un Reel con no seguidores"
+  },
+  {
+   "id": "ia-etiqueta-2024",
+   "url": "https://about.fb.com/news/2024/02/labeling-ai-generated-images-on-facebook-instagram-and-threads/",
+   "titulo": "Labeling AI-generated images on Facebook, Instagram and Threads",
+   "fecha": "2024-02-06",
+   "grado": "oficial",
+   "auto": true,
+   "cita": "require people to use this disclosure and label tool",
+   "usa": "Etiqueta de IA obligatoria para video o audio realistas"
+  },
+  {
+   "id": "ia-info",
+   "url": "https://about.fb.com/news/2024/04/metas-approach-to-labeling-ai-generated-content-and-manipulated-media/",
+   "titulo": "Our approach to labeling AI-generated content",
+   "fecha": "2025-10-23",
+   "grado": "oficial",
+   "auto": true,
+   "cita": "AI info",
+   "usa": "Nombre «AI info»; contenido solo editado va al menú"
+  },
+  {
+   "id": "ia-perfil",
+   "url": "https://creators.instagram.com/blog/ai-generated-profile-label",
+   "titulo": "AI-generated profile label",
+   "fecha": "2026-08-31",
+   "grado": "oficial",
+   "auto": true,
+   "cita": "simply use AI tools as part of their creative process",
+   "usa": "Usar IA como herramienta no obliga a la etiqueta de perfil"
+  },
+  {
+   "id": "tu-algoritmo",
+   "url": "https://about.instagram.com/blog/announcements/reels-algorithm-control",
+   "titulo": "Your Algorithm",
+   "fecha": "2026-06-10",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "Your Algorithm is now live across all of Instagram",
+   "usa": "Control de temas de quien ve"
+  },
+  {
+   "id": "politica-meta",
+   "url": "https://transparency.meta.com/features/approach-to-political-content/",
+   "titulo": "Our approach to political content",
+   "fecha": "2025-09-18",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "Lo político incluye leyes; controles de cada usuario"
+  },
+  {
+   "id": "tarjeta-reels",
+   "url": "https://transparency.meta.com/features/explaining-ranking/ig-reels-chaining/",
+   "titulo": "Tarjeta de sistema: ig-reels-chaining",
+   "fecha": "2025-11-11",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "Etapas y predicciones del sistema"
+  },
+  {
+   "id": "tarjeta-feed",
+   "url": "https://transparency.meta.com/features/explaining-ranking/ig-feed/",
+   "titulo": "Tarjeta de sistema: ig-feed",
+   "fecha": "2026-06-29",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "Etapas y predicciones del sistema"
+  },
+  {
+   "id": "tarjeta-feed-recs",
+   "url": "https://transparency.meta.com/features/explaining-ranking/ig-feed-recommendations/",
+   "titulo": "Tarjeta de sistema: ig-feed-recommendations",
+   "fecha": "2026-06-29",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "Etapas y predicciones del sistema"
+  },
+  {
+   "id": "tarjeta-explore",
+   "url": "https://transparency.meta.com/features/explaining-ranking/ig-explore/",
+   "titulo": "Tarjeta de sistema: ig-explore",
+   "fecha": "2026-06-22",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "Etapas y predicciones del sistema"
+  },
+  {
+   "id": "tarjeta-search",
+   "url": "https://transparency.meta.com/features/explaining-ranking/ig-search/",
+   "titulo": "Tarjeta de sistema: ig-search",
+   "fecha": "2026-06-23",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "Etapas y predicciones del sistema"
+  },
+  {
+   "id": "ayuda-recomendaciones",
+   "url": "https://help.instagram.com/313829416281232",
+   "titulo": "Recommendations on Instagram (pautas)",
+   "fecha": "",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "Qué no se recomienda: engagement bait, descripciones largas sin relación, no original"
+  },
+  {
+   "id": "ayuda-elegibilidad",
+   "url": "https://help.instagram.com/653964212890722",
+   "titulo": "Recommendation eligibility",
+   "fecha": "",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "Estado de la cuenta"
+  },
+  {
+   "id": "ayuda-reels-recomendados",
+   "url": "https://help.instagram.com/1525585517644948",
+   "titulo": "Qué Reels se recomiendan",
+   "fecha": "",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "Mudos, bordes, logos, marcas de agua, mayoría de texto"
+  },
+  {
+   "id": "ayuda-insights-acceso",
+   "url": "https://help.instagram.com/1533933820244654",
+   "titulo": "Quién ve estadísticas",
+   "fecha": "",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "Cuentas públicas personales y profesionales"
+  },
+  {
+   "id": "ayuda-metricas",
+   "url": "https://help.instagram.com/788388387972460",
+   "titulo": "About Instagram insights",
+   "fecha": "",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "Visualizaciones, espectadores, interacciones"
+  },
+  {
+   "id": "ayuda-metricas-reels",
+   "url": "https://help.instagram.com/202865988324236",
+   "titulo": "Insights de Reels",
+   "fecha": "",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "Tiempo de visualización y promedio"
+  },
+  {
+   "id": "ayuda-reels-duracion",
+   "url": "https://help.instagram.com/225190788256708",
+   "titulo": "Grabar un Reel",
+   "fecha": "",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "Hasta 20 min; más de 3 min no se recomienda a nuevas audiencias"
+  },
+  {
+   "id": "ayuda-reels-formato",
+   "url": "https://help.instagram.com/1038071743007909",
+   "titulo": "Tamaño y relación de aspecto",
+   "fecha": "",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "9:16, 720p, 30 fps; portada 420×654"
+  },
+  {
+   "id": "ayuda-hashtags",
+   "url": "https://help.instagram.com/351460621611097",
+   "titulo": "Hashtags",
+   "fecha": "",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "Máximo 5"
+  },
+  {
+   "id": "ayuda-carrusel",
+   "url": "https://help.instagram.com/269314186824048",
+   "titulo": "Carruseles",
+   "fecha": "",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "Hasta 20 fotos y videos"
+  },
+  {
+   "id": "ayuda-trial",
+   "url": "https://help.instagram.com/1013292530224018",
+   "titulo": "Trial reels (requisitos)",
+   "fecha": "",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "200 seguidores en cuenta profesional, 1000 en personal"
+  },
+  {
+   "id": "ayuda-tipos-cuenta",
+   "url": "https://help.instagram.com/138925576505882",
+   "titulo": "Cuentas profesionales",
+   "fecha": "",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "Creador o empresa; no pueden ser privadas"
+  },
+  {
+   "id": "creators-calidad",
+   "url": "https://creators.instagram.com/blog/best-camera-settings-instagram-reels",
+   "titulo": "Best camera settings for Instagram Reels",
+   "fecha": "2026-04-09",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "Exportar en 2K, HDR, 60 fps"
+  },
+  {
+   "id": "ayuda-collab",
+   "url": "https://help.instagram.com/iphone-app/5861247717337470",
+   "titulo": "Publicaciones en colaboración",
+   "fecha": "",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "Hasta 5 colaboradores"
+  },
+  {
+   "id": "ayuda-programar",
+   "url": "https://help.instagram.com/iphone-app/439971288310029",
+   "titulo": "Programar publicaciones",
+   "fecha": "",
+   "grado": "oficial",
+   "auto": false,
+   "cita": "",
+   "usa": "Hasta 25 al día y 30 días antes; cuenta pública"
+  },
+  {
+   "id": "buffer-frecuencia",
+   "url": "https://buffer.com/resources/how-often-to-post-on-instagram/",
+   "titulo": "Buffer: frecuencia y crecimiento (2.1 M publicaciones)",
+   "fecha": "2025-08-13",
+   "grado": "terceros",
+   "auto": false,
+   "cita": "",
+   "usa": "3-5 por semana"
+  },
+  {
+   "id": "buffer-formatos-2026",
+   "url": "https://buffer.com/resources/state-of-social-media-engagement-2026/",
+   "titulo": "Buffer: State of Social Media Engagement 2026",
+   "fecha": "2026-03-05",
+   "grado": "terceros",
+   "auto": false,
+   "cita": "",
+   "usa": "Reel más alcance; carrusel más interacción"
+  },
+  {
+   "id": "buffer-horas",
+   "url": "https://buffer.com/resources/when-is-the-best-time-to-post-on-instagram/",
+   "titulo": "Buffer: mejores horas (9.6 M publicaciones)",
+   "fecha": "2026-09-01",
+   "grado": "terceros",
+   "auto": false,
+   "cita": "",
+   "usa": "Horas de partida"
+  },
+  {
+   "id": "sprout-horas",
+   "url": "https://sproutsocial.com/insights/best-times-to-post-on-instagram/",
+   "titulo": "Sprout Social: mejores horas",
+   "fecha": "2026-03-31",
+   "grado": "terceros",
+   "auto": false,
+   "cita": "",
+   "usa": "Horas de partida"
+  },
+  {
+   "id": "socialinsider-duracion",
+   "url": "https://socialinsider.io/blog/instagram-reels-length/",
+   "titulo": "Socialinsider: duración de Reels (9.8 M)",
+   "fecha": "2026-10-20",
+   "grado": "terceros",
+   "auto": false,
+   "cita": "",
+   "usa": "45-60 s mejor tramo"
+  },
+  {
+   "id": "socialinsider-benchmarks",
+   "url": "https://www.socialinsider.io/instagram-engagement-report-2025/",
+   "titulo": "Socialinsider: benchmarks 2025-2026",
+   "fecha": "2026-02-20",
+   "grado": "terceros",
+   "auto": false,
+   "cita": "",
+   "usa": "Interacción por formato"
+  },
+  {
+   "id": "metricool-2026",
+   "url": "https://metricool.com/press-release-instagram-study-2026/",
+   "titulo": "Metricool: estudio de Instagram 2026 (24 M)",
+   "fecha": "2026-06-16",
+   "grado": "terceros",
+   "auto": false,
+   "cita": "",
+   "usa": "Vistas en los primeros 3 días; guardados en carrusel"
+  },
+  {
+   "id": "emplifi-collabs",
+   "url": "https://emplifi.io/resources/instagram-collaborations-boost-organic-engagement/",
+   "titulo": "Emplifi: colaboraciones (520K)",
+   "fecha": "2026-09-15",
+   "grado": "terceros",
+   "auto": false,
+   "cita": "",
+   "usa": "Collabs en cuentas pequeñas"
+  }
+ ]
+}

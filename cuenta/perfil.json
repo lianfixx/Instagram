@@ -1,0 +1,36 @@
+{
+  "usuario": "",
+  "usuario_nota": "Emi crea la cuenta el 14-15/11/2026. Recomendado: el mismo usuario que en X (emilianomilla_), por coherencia y porque la búsqueda compara el usuario y el nombre. Escribirlo aquí cuando exista.",
+  "activa": false,
+  "espacio": "personal",
+  "tipo_cuenta": "creador",
+  "tipo_cuenta_estado": "recomendado; por confirmar con Emi",
+  "tipo_cuenta_por_que": "Las cuentas públicas personales también ven estadísticas, pero los trial reels piden 200 seguidores en cuenta profesional frente a 1000 en personal (oficial: help.instagram.com/1013292530224018). La música de creador es más amplia que la de empresa (terceros).",
+  "presentacion": "Abogado con maestría en Alta Dirección; marca personal (Emi, 13/11/2026)",
+  "objetivos": ["prestigio y marca personal", "influencia política", "comunidad de IA + Derecho", "después: empleo"],
+  "inicio_ia": "2026-11-07",
+  "balance": {"ia-derecho": 0.4, "lifestyle": 0.4, "politica": 0.2},
+  "balance_estado": "propuesta de la skill (40/40/20); por confirmar con Emi. En X decidió partes iguales.",
+  "tolerancia_balance": 0.2,
+  "ventana_balance": 12,
+  "max_por_dia": 1,
+  "min_por_semana": 2,
+  "max_por_semana": 5,
+  "horas_hipotesis": ["13:00", "19:00"],
+  "horas_nota": "Hipótesis de estudios de terceros sin datos de México (Buffer, Sprout, Metricool: entre semana de 12 a 21 h). Se reemplazan con las horas de actividad de los seguidores en las estadísticas de Emi.",
+  "aprobacion": "paquete semanal: Emi revisa la semana completa, pero aprueba cada pieza (Emi, 13/11/2026)",
+  "modo": "la IA entrega cada pieza aprobada lista para copiar con fecha y hora; Emi la publica o la programa desde su teléfono; las métricas las pasa Emi con capturas",
+  "sesion_en_box": "prohibido: ninguna IA inicia sesión en las cuentas de Emi (regla común desde el 11/11/2026)",
+  "formatos_red": [
+    {"id": "reel", "que_premia": "tiempo de visualización, me gusta y envíos; los envíos pesan algo más con no seguidores; se reparte por etapas a no seguidores", "fuente": "@mosseri 21/01/2025; creators.instagram.com 26/02/2025", "certeza": "oficial"},
+    {"id": "carrusel", "que_premia": "recorrerlo completo, que sea informativo y reciente; más interacción y guardados que el Reel, menos alcance", "fuente": "tarjeta Feed (transparency.meta.com, 29/06/2026); Buffer 2026, Metricool 2026", "certeza": "oficial"},
+    {"id": "foto", "que_premia": "lo mismo que el feed; rinde menos que Reel y carrusel en los estudios", "fuente": "Metricool 2026, Buffer 2026", "certeza": "terceros"}
+  ],
+  "minutos_emi_por_pieza": {"reel": 20, "carrusel": 10, "foto": 5, "nota": "estimación de criterio: reescribir, aprobar y publicar; no incluye grabar"},
+  "pendientes_de_emi": [
+    {"que": "Crear la cuenta de Instagram (creador) y pasar el usuario", "desde": "2026-11-13", "bloquea": "publicar y medir"},
+    {"que": "Confirmar pilares (40/40/20 propuesto o partes iguales)", "desde": "2026-11-13", "bloquea": "balance"},
+    {"que": "Grabar los cuatro videos de la campaña (Matriz, DOF, Boletines, Vox) con datos de demostración", "desde": "2026-11-13", "bloquea": "Reels del 17/11 al 26/11"}
+  ],
+  "actualizado": "2026-11-13"
+}
