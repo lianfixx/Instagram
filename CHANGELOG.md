@@ -34,7 +34,7 @@ Lo más reciente arriba. Formato en `ia/PROTOCOLO.md`, sección 3.
     - impresiones según la API;
     - «Tu algoritmo», solo en inglés;
     - menús de la ayuda: «Add AI label» y «More options → Schedule this post».
-  - El CI prueba Python 3.9 y 3.12.
+  - El CI prueba Python 3.10 y 3.12. Se intentó con 3.9, pero el runner de GitHub (Ubuntu 26.04) ya no lo ofrece; 3.9.25 lo probó el auditor en local con `ia/verificar.py ci` → aprobado.
   - Fuentes nuevas: `creators-faq`, `ayuda-etiqueta-ia` y `metricool-playbook-2025`.
 - **Errata de la entrada 1.0.0.**
   - Dice que las fuentes oficiales se leyeron «una por una». No es exacto: varias páginas de la ayuda y tres tarjetas de Meta no cargaron con las herramientas de esta sesión. Esas páginas las leyó después el auditor con el Chrome de box, salvo las tarjetas de Feed, Explore y Search, y algunas páginas de la ayuda (elegibilidad y métricas de publicaciones).
